@@ -1,0 +1,37 @@
+# FocusGram
+
+## Project info
+
+- Project name: FocusGram
+- Repository: https://github.com/hbx1-bx1/FocusGram
+- Latest release: https://github.com/hbx1-bx1/FocusGram/releases/latest
+
+## Description
+
+FocusGram is a distraction-free Instagram Direct Messages wrapper for Desktop and Android MVP.
+
+## Main purpose
+
+Use Instagram Direct Messages without Reels, Explore, Stories, posts, profiles, and distracting media.
+
+## Platforms
+
+- macOS
+- Windows
+- Linux
+- Android MVP
+
+## Keywords
+
+- Instagram Direct Messages wrapper
+- Instagram DM only app
+- distraction-free Instagram
+- block Instagram Reels
+- block Instagram Explore
+- Instagram productivity app
+- Focus app for Instagram
+- minimal Instagram client
+
+## Disclaimer
+
+FocusGram is not affiliated with Instagram, Meta, Facebook, or WhatsApp.
