@@ -1,6 +1,16 @@
-# FocusGram
+<p align="center">
+  <img src="assets/focusgram_icon.png" width="120" alt="FocusGram logo">
+</p>
 
-A minimal Instagram Direct Messages wrapper designed to reduce distraction.
+<h1 align="center">FocusGram</h1>
+
+<p align="center">
+  A minimal Instagram Direct Messages wrapper designed to reduce distraction.
+</p>
+
+<p align="center">
+  MVP Preview · Built by <a href="https://github.com/hbx1-bx1">HBX1-BX1</a>
+</p>
 
 ## Status
 
