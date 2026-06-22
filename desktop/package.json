@@ -1,0 +1,62 @@
+{
+  "name": "focusgram",
+  "version": "1.0.0",
+  "description": "A minimal Instagram Direct Messages wrapper designed to reduce distraction.",
+  "main": "src/main.js",
+  "author": {
+    "name": "Layth",
+    "email": "barasaaid123@gmail.com"
+  },
+  "homepage": "https://github.com/USERNAME/FocusGram",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/USERNAME/FocusGram.git"
+  },
+  "scripts": {
+    "dev": "electron .",
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.focusgram.app",
+    "productName": "FocusGram",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "assets/icons/icon.ico"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "assets/icons/icon.icns"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "assets/icons/icon.png",
+      "category": "Utility",
+      "maintainer": "Layth <barasaaid123@gmail.com>"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.0"
+  },
+  "allowScripts": {
+    "electron@31.7.7": true
+  }
+}
