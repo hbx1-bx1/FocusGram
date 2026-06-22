@@ -30,7 +30,7 @@ The app runs Instagram Web inside a lightweight native wrapper with navigation r
 | Windows | x64 | EXE (NSIS) | Available |
 | Linux | x64 | AppImage | Available |
 | Linux | arm64 | AppImage | Available |
-| Android | arm64 / x86 | APK | Planned |
+| Android | universal debug APK | APK | Available |
 
 ## Download table
 
@@ -40,6 +40,7 @@ The app runs Instagram Web inside a lightweight native wrapper with navigation r
 | FocusGram-macOS-arm64-1.0.0.dmg | macOS arm64 |
 | FocusGram-Linux-x64-1.0.0.AppImage | Linux x64 |
 | FocusGram-Linux-arm64-1.0.0.AppImage | Linux arm64 |
+| FocusGram-Android-MVP-debug-1.0.0.apk | Android MVP debug APK |
 
 All downloads are available from the latest GitHub Release:
 
@@ -47,7 +48,10 @@ All downloads are available from the latest GitHub Release:
 
 ### Direct download commands
 
-**Android APK** will be added when uploaded to GitHub Releases.
+**Android APK:**
+```bash
+curl -L -o FocusGram-Android-MVP-debug-1.0.0.apk https://github.com/hbx1-bx1/FocusGram/releases/latest/download/FocusGram-Android-MVP-debug-1.0.0.apk
+```
 
 **macOS:**
 ```bash
@@ -134,7 +138,11 @@ Pre-built release files are available for direct download from GitHub Releases:
 - FocusGram-macOS-arm64-1.0.0.dmg
 - FocusGram-Linux-x64-1.0.0.AppImage
 - FocusGram-Linux-arm64-1.0.0.AppImage
-- Android APK (when uploaded)
+- FocusGram-Android-MVP-debug-1.0.0.apk
+
+## Search keywords
+
+FocusGram may be useful for people looking for an Instagram DM-only wrapper, a distraction-free Instagram desktop app, or a way to reduce Reels, Explore, Stories, and feed exposure while keeping Direct Messages accessible.
 
 ## Security warnings
 
