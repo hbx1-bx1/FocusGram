@@ -41,9 +41,9 @@ The app runs Instagram Web inside a lightweight native wrapper with navigation r
 | FocusGram-Linux-x64-1.0.0.AppImage | Linux x64 |
 | FocusGram-Linux-arm64-1.0.0.AppImage | Linux arm64 |
 
-All downloads are available on GitHub Releases:
+All downloads are available from the latest GitHub Release:
 
-https://github.com/hbx1-bx1/FocusGram/releases/latest
+[Download FocusGram from GitHub Releases](https://github.com/hbx1-bx1/FocusGram/releases/latest)
 
 ### Direct download commands
 
