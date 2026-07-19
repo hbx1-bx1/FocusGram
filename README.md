@@ -1,3 +1,15 @@
+> [!CAUTION]
+> **Development Status**
+>
+> This project is currently **under development** but has been **temporarily paused** due to my academic commitments while preparing for the Turkish High School Entrance Exam (LGS).
+>
+> As a result, some planned features have not yet been completed, and certain parts of the project may be incomplete or behave unexpectedly.
+>
+> I plan to resume development and continue improving this project after completing my LGS exam, as time permits.
+>
+> Thank you for your patience, understanding, and support.
+---
+
 <p align="center">
   <img src="assets/focusgram_icon.png" width="120" alt="FocusGram logo">
 </p>
