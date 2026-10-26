@@ -94,18 +94,18 @@ chmod +x FocusGram-Linux-arm64-1.0.0.AppImage
 The Android version is an MVP with strict restrictions:
 
 - Direct Messages only
-- Text-focused interface
+- Text, images, videos, audio attachments, and voice messages inside DMs
 - No calls
 - No Reels
 - No Stories
 - No Explore
 - No Posts
 - No Profiles
-- No audio or video media
-- Most images are intentionally blocked to reduce distraction
 - F-Droid release is planned
 
-Settings are accessed via long-press and include Reload, Find in Page, and Clear Session.
+Media inside conversations is preserved. Reels, Stories, Explore, Posts, and Profiles are still blocked. Android may ask for microphone or camera permission the first time you record a voice note or attach media.
+
+Settings are accessed via long-press and include Reload, Find in Page, and Log out. Log out clears the local Instagram session on the device.
 
 ## Desktop
 

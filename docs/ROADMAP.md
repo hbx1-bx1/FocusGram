@@ -10,6 +10,11 @@ For a machine-readable project summary, see `llms.txt` in the project root.
 
 - [x] Project structure reorganization
 - [x] Android MVP (DM only, URL allowlist, basic JS injection)
+- [x] Android DM media preservation (images, video, audio)
+- [x] Android media picker + microphone/camera permissions
+- [x] Android Log out
+- [x] Android release signing scaffold
+- [x] Gradle wrapper jar restored
 - [x] Desktop MVP (Electron, DM allowlist, navigation guard, session clear)
 - [x] Block Reels, Explore, Posts, Stories
 - [x] Clear Session

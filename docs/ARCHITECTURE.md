@@ -36,11 +36,20 @@ The same JavaScript logic is used on both platforms:
 - Allowlist matching
 - History API override
 - Click capture (href links + aria-label for reel/story/post/profile)
-- Link disabling (remove href, aria-disabled, pointerEvents: none)
-- Blocked media stopping (video/audio in dialogs and blocked links only, NOT chat media)
+- Link disabling (aria-disabled, pointerEvents: none)
+- Blocked media stopping (video/audio inside blocked links only, NOT chat media)
 - CSS injection (hide sidebar suggestions, footer, desktop layout fixes)
-- MutationObserver
-- Periodic check at 250ms
+- MutationObserver with debounce
+- Periodic check (250ms on Desktop, 1000ms on Android)
+
+Android no longer removes all `img`, `picture`, `canvas`, `video`, or `audio` elements. Chat images, video attachments, voice notes, avatars, and CAPTCHA/2FA images are preserved. Only media inside blocked links (Reels, Stories, Posts) is stopped.
+
+## Media pipeline (Android)
+
+- `WebChromeClient.onShowFileChooser` opens the system file picker for images, videos, and audio.
+- `WebChromeClient.onPermissionRequest` grants microphone/camera access only to `instagram.com` origins after the Android runtime permission is granted.
+- `WebChromeClient.onShowCustomView` / `onHideCustomView` provide full-screen HTML5 video.
+- Received media is rendered by Instagram Web inside the conversation; FocusGram does not proxy or store it.
 
 ## Privacy model
 
