@@ -7,6 +7,9 @@ keystore.properties
 *.jks
 *.keystore
 
+# Original supplied brand source folder; clean copies live in assets/brand/
+files (1)/
+
 desktop/node_modules/
 desktop/dist/
 

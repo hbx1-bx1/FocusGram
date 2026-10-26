@@ -1,67 +1,121 @@
 package com.focusgram.app
 
 import android.Manifest
-import android.app.Activity
-import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.view.GestureDetector
-import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.webkit.CookieManager
 import android.webkit.PermissionRequest
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
-import android.webkit.WebStorage
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.FrameLayout
-import android.widget.Toast
+import android.widget.ImageButton
+import android.widget.ProgressBar
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.button.MaterialButton
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var webView: WebView
+    private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var fullscreenContainer: FrameLayout
+    private lateinit var topBarContainer: View
+    private lateinit var composeButton: ImageButton
+    private lateinit var pageProgress: ProgressBar
+    private lateinit var errorView: View
 
     private var filePathCallback: ValueCallback<Array<Uri>>? = null
     private var pendingPermissionRequest: PermissionRequest? = null
     private var customView: View? = null
     private var customViewCallback: WebChromeClient.CustomViewCallback? = null
+    private var lastPath: String? = null
 
     private val inboxUrl = "https://www.instagram.com/direct/inbox/"
-    private val loginUrl = "https://www.instagram.com/accounts/login/"
+
+    private val routePoller = object : Runnable {
+        override fun run() {
+            webView.evaluateJavascript("location.pathname") { value ->
+                if (isFinishing || isDestroyed) return@evaluateJavascript
+                val path = value?.trim('"') ?: return@evaluateJavascript
+                updateNativeChrome(path)
+            }
+            webView.postDelayed(this, ROUTE_POLL_INTERVAL)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         webView = findViewById(R.id.webView)
+        SessionManager.attach(webView)
+        swipeRefresh = findViewById(R.id.swipeRefresh)
         fullscreenContainer = findViewById(R.id.fullscreenContainer)
+        topBarContainer = findViewById(R.id.topBarContainer)
+        composeButton = findViewById(R.id.composeButton)
+        pageProgress = findViewById(R.id.pageProgress)
+        errorView = findViewById(R.id.errorView)
+
         setupWebView()
+        setupBackNavigation()
+
+        swipeRefresh.setColorSchemeColors(
+            ContextCompat.getColor(this, R.color.brand_sage),
+            ContextCompat.getColor(this, R.color.brand_clay)
+        )
+        swipeRefresh.setProgressBackgroundColorSchemeColor(
+            ContextCompat.getColor(this, R.color.surface)
+        )
+        swipeRefresh.setOnRefreshListener {
+            showError(false)
+            webView.reload()
+        }
+
+        findViewById<ImageButton>(R.id.settingsButton).setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+        composeButton.setOnClickListener { openComposer() }
+        findViewById<MaterialButton>(R.id.retryButton).setOnClickListener {
+            showError(false)
+            webView.loadUrl(inboxUrl)
+        }
 
         if (savedInstanceState == null) {
             webView.loadUrl(inboxUrl)
         }
+    }
 
-        val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
-            override fun onLongPress(e: MotionEvent) {
-                showSettingsDialog()
+    private fun setupBackNavigation() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (customView != null) {
+                    hideCustomView()
+                    return
+                }
+                if (webView.canGoBack()) {
+                    webView.goBack()
+                    return
+                }
+                isEnabled = false
+                onBackPressedDispatcher.onBackPressed()
             }
         })
-
-        webView.setOnTouchListener { _, event ->
-            gestureDetector.onTouchEvent(event)
-            false
-        }
     }
 
     private fun setupWebView() {
+        webView.setBackgroundColor(ContextCompat.getColor(this, R.color.app_background))
         webView.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
@@ -103,15 +157,41 @@ class MainActivity : Activity() {
                 if (!isUrlAllowed(url)) {
                     view.stopLoading()
                     view.loadUrl(inboxUrl)
+                    return
                 }
+                showError(false)
+                pageProgress.visibility = View.VISIBLE
+                updateNativeChrome(Uri.parse(url).path ?: "/")
             }
 
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
+                pageProgress.visibility = View.INVISIBLE
+                swipeRefresh.isRefreshing = false
                 if (!isUrlAllowed(url)) {
                     view.loadUrl(inboxUrl)
-                } else {
-                    view.evaluateJavascript(buildInjectionScript(), null)
+                    return
+                }
+                showError(false)
+                updateNativeChrome(Uri.parse(url).path ?: "/")
+                view.evaluateJavascript(buildInjectionScript(), null)
+            }
+
+            override fun doUpdateVisitedHistory(view: WebView, url: String, isReload: Boolean) {
+                super.doUpdateVisitedHistory(view, url, isReload)
+                updateNativeChrome(Uri.parse(url).path ?: "/")
+            }
+
+            override fun onReceivedError(
+                view: WebView,
+                request: WebResourceRequest,
+                error: WebResourceError
+            ) {
+                super.onReceivedError(view, request, error)
+                if (request.isForMainFrame) {
+                    pageProgress.visibility = View.INVISIBLE
+                    swipeRefresh.isRefreshing = false
+                    showError(true)
                 }
             }
         }
@@ -178,6 +258,9 @@ class MainActivity : Activity() {
 
                 customView = view
                 customViewCallback = callback
+                topBarContainer.visibility = View.GONE
+                pageProgress.visibility = View.INVISIBLE
+                swipeRefresh.isRefreshing = false
                 fullscreenContainer.addView(
                     view,
                     FrameLayout.LayoutParams(
@@ -204,6 +287,45 @@ class MainActivity : Activity() {
         customViewCallback?.onCustomViewHidden()
         customViewCallback = null
         window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+        val path = lastPath ?: Uri.parse(webView.url ?: inboxUrl).path ?: "/"
+        lastPath = null
+        updateNativeChrome(path)
+    }
+
+    private fun updateNativeChrome(path: String) {
+        if (customView != null) {
+            lastPath = path
+            return
+        }
+        if (path == lastPath) return
+        lastPath = path
+
+        val isInbox = path == "/direct/inbox" || path == "/direct/inbox/"
+        val isAuth = path.startsWith("/accounts") ||
+            path.startsWith("/challenge") ||
+            path.startsWith("/two_factor") ||
+            path.startsWith("/re_login")
+        val showBar = isInbox || isAuth
+
+        topBarContainer.visibility = if (showBar) View.VISIBLE else View.GONE
+        composeButton.visibility = if (isInbox) View.VISIBLE else View.GONE
+    }
+
+    private fun showError(show: Boolean) {
+        errorView.visibility = if (show) View.VISIBLE else View.GONE
+        webView.visibility = if (show) View.INVISIBLE else View.VISIBLE
+    }
+
+    private fun openComposer() {
+        val js = """
+            (function(){
+              var a=document.querySelector('a[href="/direct/new/"]');
+              if(a){a.click();return true}
+              return false
+            })()
+        """.trimIndent()
+        webView.evaluateJavascript(js, null)
     }
 
     private fun isInstagramOrigin(origin: String): Boolean {
@@ -340,7 +462,26 @@ class MainActivity : Activity() {
   var S='a[href*="/explore"],a[href*="/reels"],a[href*="/reel"],a[href*="/stories"],a[href*="/story"],a[href*="/p/"],a[href*="/tv"],a[href*="/shop"],a[href*="/create"],a[href*="/accounts/edit"],a[href*="/settings"]';
   var B='a[href*="/reels"],a[href*="/reel"],a[href*="/stories"],a[href*="/story"],a[href*="/p/"],a[href*="/tv"]';
 
+  function hideInboxChrome(){
+    if(!/^\/direct\/inbox\/?$/.test(window.location.pathname)) return;
+    var a=document.querySelector('a[href="/direct/new/"]');
+    if(a){
+      var row=a.parentElement;
+      while(row&&row.parentElement){
+        var rect=row.getBoundingClientRect();
+        if(rect.width>300&&rect.height>=36&&rect.height<=60){if(row.style.display!=='none')row.style.display='none';break}
+        row=row.parentElement;
+      }
+    }
+    var h=Array.prototype.slice.call(document.querySelectorAll('h1')).filter(function(e){
+      var t=(e.innerText||'').trim();
+      return t==='Messages'||t==='الرسائل'||t==='Direct';
+    })[0];
+    if(h&&h.style.display!=='none') h.style.display='none';
+  }
+
   function d(){
+    hideInboxChrome();
     document.querySelectorAll(S).forEach(function(e){
       e.setAttribute('aria-disabled','true');
       e.style.pointerEvents='none';
@@ -375,68 +516,22 @@ class MainActivity : Activity() {
 """.trimIndent()
     }
 
-    private fun showSettingsDialog() {
-        val options = arrayOf("Reload page", "Find in page", "Log out")
-
-        AlertDialog.Builder(this)
-            .setTitle("FocusGram")
-            .setItems(options) { _, which ->
-                when (which) {
-                    0 -> webView.loadUrl(inboxUrl)
-                    1 -> webView.showFindDialog("", true)
-                    2 -> confirmLogout()
-                }
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
-    }
-
-    private fun confirmLogout() {
-        AlertDialog.Builder(this)
-            .setTitle("Log out?")
-            .setMessage("You will need to sign in to Instagram again on this device.")
-            .setPositiveButton("Log out") { _, _ -> logout() }
-            .setNegativeButton("Cancel", null)
-            .show()
-    }
-
-    private fun logout() {
-        CookieManager.getInstance().removeAllCookies {
-            CookieManager.getInstance().flush()
-            WebStorage.getInstance().deleteAllData()
-            webView.clearCache(true)
-            webView.clearHistory()
-            webView.clearFormData()
-            webView.clearSslPreferences()
-            webView.loadUrl(loginUrl)
-            Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        if (customView != null) {
-            hideCustomView()
-            return
-        }
-        if (webView.canGoBack()) {
-            webView.goBack()
-        } else {
-            super.onBackPressed()
-        }
-    }
-
     override fun onResume() {
         super.onResume()
         webView.onResume()
+        webView.removeCallbacks(routePoller)
+        webView.post(routePoller)
     }
 
     override fun onPause() {
+        webView.removeCallbacks(routePoller)
         webView.onPause()
         super.onPause()
     }
 
     override fun onDestroy() {
+        webView.removeCallbacks(routePoller)
+        SessionManager.detach(webView)
         fullscreenContainer.removeAllViews()
         webView.destroy()
         super.onDestroy()
@@ -455,5 +550,6 @@ class MainActivity : Activity() {
     companion object {
         private const val FILE_CHOOSER_REQUEST = 1001
         private const val WEB_PERMISSION_REQUEST = 1002
+        private const val ROUTE_POLL_INTERVAL = 900L
     }
 }

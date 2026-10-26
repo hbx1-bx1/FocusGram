@@ -1,22 +1,29 @@
-# FocusGram Android (Experimental MVP)
+# FocusGram Android
 
-This is an experimental Android wrapper for Instagram DM-only usage.
+FocusGram Android is a messaging-only Android client built around Instagram Direct inside a restricted WebView, with a native FocusGram shell.
 
 ## Status
 
 - DM chat threads: working
 - Login and 2FA: working
-- Voice messages, images, stickers inside DMs: displayed
-- Sending images, videos, and audio via the system file picker: working
-- Recording voice notes: requires microphone permission
+- Received images, video, audio, and voice notes inside DMs: displayed
+- Sending media through the system picker: picker opens; end-to-end send still needs a physical-device pass
+- Recording voice notes: microphone permission path implemented; end-to-end recording still needs a physical-device pass
 - Full-screen video playback: working
+- Native shell: brand bar, compose, settings, pull-to-refresh, offline/retry state
+- Native settings: theme (system/light/dark), language (system/English/Arabic), privacy, source code, version, logout
+- Log out: confirmation dialog; clears cookies, web storage, the active WebView's cache, history, form data, and SSL preferences, then recreates the app
+- Arabic/English UI with RTL support and language-aware logo lockups
+- Reels, Stories, Explore, Posts, Profiles: blocked
 - Calls and in-app camera capture: not guaranteed / not part of the MVP
-- Stories: blocked
-- Reels: blocked
-- Explore: blocked
-- Posts: blocked
-- Profile browsing: blocked
-- Log out: available from the long-press menu
+
+Current version: **1.2.0** (versionCode 4).
+
+## UI and branding
+
+The native shell uses AppCompat and Material 3. The FocusGram lockups and symbol come from the SVGs in `assets/brand/`; the Android app uses language-qualified drawables so the English lockup is wordmark-left/symbol-right and the Arabic lockup is symbol-left/wordmark-right. The launcher icon is adaptive, with light/dark foregrounds and a monochrome layer.
+
+The native top bar appears on the inbox and auth screens. It hides inside conversation threads so Instagram's own thread header is the only header. The compose action triggers Instagram's hidden new-message link; Settings opens the native screen.
 
 ## Build from the command line
 
@@ -77,7 +84,8 @@ Open the folder `android/FocusGramAndroid` directly in Android Studio. Android S
 - The Android version uses the WebView's default User-Agent. Some Instagram flows may behave differently inside a WebView.
 - Calls, in-app camera capture, and vanish-mode media may not work reliably.
 - Media playback may require a tap; autoplay is intentionally not forced.
-- The long-press settings entry can conflict with Instagram's text-selection menu. A native settings screen is planned.
-- No external libraries used, only Android SDK.
+- Sending media, recording voice notes, and logging out should be verified end-to-end on a physical device before a public release.
+- The current target is Android 14 (API 34); an API 35 target upgrade is planned.
+- AndroidX AppCompat, Material Components, Activity, and SwipeRefreshLayout are used.
 - Minimum SDK: 24 (Android 7.0)
 - No data collection, no analytics, no tracking

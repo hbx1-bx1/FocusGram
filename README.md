@@ -17,7 +17,7 @@
 <h1 align="center">FocusGram</h1>
 
 <p align="center">
-  A minimal Instagram Direct Messages wrapper designed to reduce distraction.
+  A calm, messaging-only Instagram client designed to reduce distraction.
 </p>
 
 <p align="center">
@@ -105,7 +105,18 @@ The Android version is an MVP with strict restrictions:
 
 Media inside conversations is preserved. Reels, Stories, Explore, Posts, and Profiles are still blocked. Android may ask for microphone or camera permission the first time you record a voice note or attach media.
 
-Settings are accessed via long-press and include Reload, Find in Page, and Log out. Log out clears the local Instagram session on the device.
+The native Android shell adds:
+
+- A FocusGram brand bar with compose and settings actions
+- Pull-to-refresh and a native offline/retry state
+- A native Settings screen for theme, language, privacy, source code, version, and logout
+- Arabic and English UI with RTL-aware logo lockups and icons
+- Light, dark, and system theme modes
+- A new adaptive FocusGram launcher icon and monochrome layer
+
+The top bar hides inside conversation threads so Instagram's own thread header is the only header. The compose button opens Instagram's new-message sheet. Log out clears the local Instagram session and recreates the app on the inbox.
+
+The repository is on version **1.2.0** (versionCode 4). The 1.0.0 APK in the Releases section predates the native shell; build from source for the current UI.
 
 ## Desktop
 

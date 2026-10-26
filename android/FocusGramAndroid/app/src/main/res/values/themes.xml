@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="@android:style/Theme.Material.NoActionBar">
-        <item name="android:windowBackground">@android:color/black</item>
+    <style name="Base.AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/launch_background</item>
+        <item name="android:statusBarColor">@color/app_background</item>
+        <item name="android:navigationBarColor">@color/app_background</item>
+        <item name="android:colorBackground">@color/app_background</item>
+        <item name="android:textColorPrimary">@color/ink</item>
+        <item name="android:textColorSecondary">@color/ink_muted</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+
+        <item name="colorPrimary">@color/brand_sage</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorPrimaryContainer">@color/brand_sage_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_brand_sage_container</item>
+        <item name="colorSecondary">@color/brand_clay</item>
+        <item name="colorOnSecondary">@color/on_clay</item>
+        <item name="colorSecondaryContainer">@color/brand_clay_container</item>
+        <item name="colorOnSecondaryContainer">@color/on_brand_clay_container</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/ink_muted</item>
+        <item name="colorSurfaceContainerLowest">@color/surface_container_lowest</item>
+        <item name="colorSurfaceContainerLow">@color/surface_container_low</item>
+        <item name="colorSurfaceContainer">@color/surface_container</item>
+        <item name="colorSurfaceContainerHigh">@color/surface_container_high</item>
+        <item name="colorSurfaceContainerHighest">@color/surface_container_highest</item>
+        <item name="colorSurfaceDim">@color/surface_dim</item>
+        <item name="colorSurfaceBright">@color/surface_bright</item>
+        <item name="colorSurfaceInverse">@color/surface_inverse</item>
+        <item name="colorOnSurfaceInverse">@color/on_surface_inverse</item>
+        <item name="colorOutline">@color/outline_soft</item>
+        <item name="colorOutlineVariant">@color/outline_variant</item>
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/on_primary</item>
+        <item name="colorControlNormal">@color/icon_primary</item>
+        <item name="colorControlActivated">@color/brand_sage</item>
+        <item name="colorControlHighlight">@color/brand_sage_container</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.FocusGram.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.FocusGram.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.FocusGram.Large</item>
+    </style>
+
+    <style name="AppTheme" parent="Base.AppTheme">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 </resources>

@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/app_background"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/icon_primary"
+        app:title="@string/settings"
+        app:titleTextColor="@color/ink" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/outline_soft" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingTop="16dp"
+            android:paddingEnd="@dimen/screen_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_brand_hero"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/logo_content_description"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/focusgram_lockup" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/brand_tagline"
+                    android:textAppearance="@style/TextAppearance.FocusGram.HeroTitle" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/section_gap"
+                android:layout_marginBottom="8dp"
+                android:text="@string/section_account"
+                android:textAppearance="@style/TextAppearance.FocusGram.Section" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/panel_radius"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/outline_soft"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/logoutRow"
+                        style="@style/Widget.FocusGram.Row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_logout"
+                            app:tint="@color/brand_clay" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/logout"
+                                android:textAppearance="@style/TextAppearance.FocusGram.RowTitle"
+                                android:textColor="@color/brand_clay" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/logout_subtitle"
+                                android:textAppearance="@style/TextAppearance.FocusGram.RowSubtitle" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/chevron_size"
+                            android:layout_height="@dimen/chevron_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_chevron_end"
+                            app:tint="@color/brand_clay" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/section_gap"
+                android:layout_marginBottom="8dp"
+                android:text="@string/section_appearance"
+                android:textAppearance="@style/TextAppearance.FocusGram.Section" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/panel_radius"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/outline_soft"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/themeRow"
+                        style="@style/Widget.FocusGram.Row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_theme"
+                            app:tint="@color/icon_primary" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/theme"
+                                android:textAppearance="@style/TextAppearance.FocusGram.RowTitle" />
+
+                            <TextView
+                                android:id="@+id/themeValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/theme_system"
+                                android:textAppearance="@style/TextAppearance.FocusGram.RowSubtitle" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/chevron_size"
+                            android:layout_height="@dimen/chevron_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_chevron_end"
+                            app:tint="@color/ink_muted" />
+                    </LinearLayout>
+
+                    <View
+                        style="@style/Widget.FocusGram.Divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                    <LinearLayout
+                        android:id="@+id/languageRow"
+                        style="@style/Widget.FocusGram.Row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_language"
+                            app:tint="@color/icon_primary" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/language"
+                                android:textAppearance="@style/TextAppearance.FocusGram.RowTitle" />
+
+                            <TextView
+                                android:id="@+id/languageValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/language_system"
+                                android:textAppearance="@style/TextAppearance.FocusGram.RowSubtitle" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/chevron_size"
+                            android:layout_height="@dimen/chevron_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_chevron_end"
+                            app:tint="@color/ink_muted" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/section_gap"
+                android:layout_marginBottom="8dp"
+                android:text="@string/section_about"
+                android:textAppearance="@style/TextAppearance.FocusGram.Section" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/panel_radius"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/outline_soft"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/privacyRow"
+                        style="@style/Widget.FocusGram.Row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_privacy"
+                            app:tint="@color/icon_primary" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/privacy"
+                                android:textAppearance="@style/TextAppearance.FocusGram.RowTitle" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/privacy_subtitle"
+                                android:textAppearance="@style/TextAppearance.FocusGram.RowSubtitle" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/chevron_size"
+                            android:layout_height="@dimen/chevron_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_chevron_end"
+                            app:tint="@color/ink_muted" />
+                    </LinearLayout>
+
+                    <View
+                        style="@style/Widget.FocusGram.Divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                    <LinearLayout
+                        android:id="@+id/sourceRow"
+                        style="@style/Widget.FocusGram.Row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_code"
+                            app:tint="@color/icon_primary" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/source_code"
+                                android:textAppearance="@style/TextAppearance.FocusGram.RowTitle" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/source_subtitle"
+                                android:textAppearance="@style/TextAppearance.FocusGram.RowSubtitle" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/chevron_size"
+                            android:layout_height="@dimen/chevron_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_chevron_end"
+                            app:tint="@color/ink_muted" />
+                    </LinearLayout>
+
+                    <View
+                        style="@style/Widget.FocusGram.Divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="center_vertical"
+                        android:minHeight="64dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_info"
+                            app:tint="@color/icon_primary" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:text="@string/version"
+                            android:textAppearance="@style/TextAppearance.FocusGram.RowTitle" />
+
+                        <TextView
+                            android:id="@+id/versionValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/ink_muted"
+                            android:textDirection="ltr"
+                            android:textSize="14sp"
+                            tools:text="1.2.0" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/footer"
+                android:textAppearance="@style/TextAppearance.FocusGram.Footer" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
