@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Core surfaces -->
+    <color name="app_background">#101410</color>
+    <color name="surface">#171C17</color>
+    <color name="surface_variant">#1F2720</color>
+    <color name="hero_bg">#1D251E</color>
+
+    <!-- Brand -->
+    <color name="brand_sage">#A5AF9F</color>
+    <color name="brand_sage_strong">#C7D0C0</color>
+    <color name="brand_sage_container">#2A352B</color>
+    <color name="on_brand_sage_container">#DCE8D8</color>
+    <color name="brand_clay">#D9A39A</color>
+    <color name="brand_clay_container">#3B2C28</color>
+    <color name="on_brand_clay_container">#F0DCD6</color>
+
+    <!-- Text and icons -->
+    <color name="ink">#E6E3DA</color>
+    <color name="ink_muted">#A9B2A6</color>
+    <color name="icon_primary">#C7D0C0</color>
+    <color name="outline_soft">#303A31</color>
+    <color name="on_primary">#1B211C</color>
+    <color name="on_clay">#2A1B17</color>
+    <color name="error">#D9A39A</color>
+    <color name="progress_track">#2A352B</color>
+
+    <!-- Material surface containers -->
+    <color name="surface_container_lowest">#0B0E0B</color>
+    <color name="surface_container_low">#171C17</color>
+    <color name="surface_container">#1B211C</color>
+    <color name="surface_container_high">#1F2720</color>
+    <color name="surface_container_highest">#252D26</color>
+    <color name="surface_dim">#101410</color>
+    <color name="surface_bright">#343D35</color>
+    <color name="surface_inverse">#E6E3DA</color>
+    <color name="on_surface_inverse">#2F3A32</color>
+    <color name="outline_variant">#3A453B</color>
+    <color name="scrim">#000000</color>
+
+    <!-- Launcher -->
+    <color name="ic_launcher_background">#1F2720</color>
+</resources>

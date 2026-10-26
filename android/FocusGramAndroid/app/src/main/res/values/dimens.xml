@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_padding">20dp</dimen>
+    <dimen name="section_gap">28dp</dimen>
+    <dimen name="row_gap">16dp</dimen>
+    <dimen name="icon_size">22dp</dimen>
+    <dimen name="chevron_size">18dp</dimen>
+    <dimen name="top_bar_height">56dp</dimen>
+    <dimen name="hero_radius">28dp</dimen>
+    <dimen name="panel_radius">20dp</dimen>
+</resources>

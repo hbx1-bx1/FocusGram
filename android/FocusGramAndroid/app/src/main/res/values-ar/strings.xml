@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FocusGram</string>
+    <string name="settings">الإعدادات</string>
+    <string name="new_message">رسالة جديدة</string>
+    <string name="back">رجوع</string>
+    <string name="cancel">إلغاء</string>
+    <string name="retry">إعادة المحاولة</string>
+
+    <string name="brand_tagline">رسائل، بلا ضجيج.</string>
+    <string name="brand_version_format">FocusGram %1$s</string>
+
+    <string name="section_account">الحساب</string>
+    <string name="section_appearance">المظهر</string>
+    <string name="section_about">حول التطبيق</string>
+
+    <string name="logout">تسجيل الخروج</string>
+    <string name="logout_subtitle">مسح جلسة إنستغرام من هذا الجهاز</string>
+    <string name="logout_confirm_title">تسجيل الخروج؟</string>
+    <string name="logout_confirm_message">ستحتاج إلى تسجيل الدخول إلى إنستغرام مرة أخرى على هذا الجهاز.</string>
+    <string name="logout_confirm_action">تسجيل الخروج</string>
+    <string name="logout_complete">تم تسجيل الخروج</string>
+
+    <string name="theme">المظهر</string>
+    <string name="theme_system">حسب النظام</string>
+    <string name="theme_light">فاتح</string>
+    <string name="theme_dark">داكن</string>
+
+    <string name="language">اللغة</string>
+    <string name="language_system">حسب النظام</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_english">English</string>
+
+    <string name="privacy">الخصوصية</string>
+    <string name="privacy_subtitle">كيف يتعامل FocusGram مع بياناتك</string>
+    <string name="privacy_title">الخصوصية</string>
+    <string name="privacy_body">لا يجمع FocusGram بياناتك أو يخزّنها أو يشاركها. تبقى جلسة إنستغرام على هذا الجهاز. يفتح التطبيق إنستغرام داخل WebView مقيّد، ويُبقي الريلز والقصص والاستكشاف والمنشورات والملفات الشخصية خارج التجربة.</string>
+
+    <string name="source_code">الشيفرة المصدرية</string>
+    <string name="source_subtitle">عرض المشروع على GitHub</string>
+    <string name="version">الإصدار</string>
+
+    <string name="footer">صُنع لمحادثات أكثر هدوءاً.</string>
+
+    <string name="error_title">تعذّر الوصول إلى إنستغرام</string>
+    <string name="error_message">تحقّق من اتصالك وحاول مرة أخرى.</string>
+
+    <string name="logo_content_description">FocusGram</string>
+    <string name="no_browser">لا يوجد تطبيق متصفح.</string>
+</resources>

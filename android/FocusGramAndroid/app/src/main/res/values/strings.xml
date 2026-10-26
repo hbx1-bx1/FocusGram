@@ -2,4 +2,49 @@
 <resources>
     <string name="app_name">FocusGram</string>
     <string name="settings">Settings</string>
+    <string name="new_message">New message</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Try again</string>
+
+    <string name="brand_tagline">Messages, without the noise.</string>
+    <string name="brand_version_format">FocusGram %1$s</string>
+
+    <string name="section_account">Account</string>
+    <string name="section_appearance">Appearance</string>
+    <string name="section_about">About</string>
+
+    <string name="logout">Log out</string>
+    <string name="logout_subtitle">Clear this device\'s Instagram session</string>
+    <string name="logout_confirm_title">Log out?</string>
+    <string name="logout_confirm_message">You will need to sign in to Instagram again on this device.</string>
+    <string name="logout_confirm_action">Log out</string>
+    <string name="logout_complete">Logged out</string>
+
+    <string name="theme">Theme</string>
+    <string name="theme_system">System default</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+
+    <string name="language">Language</string>
+    <string name="language_system">System default</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_english">English</string>
+
+    <string name="privacy">Privacy</string>
+    <string name="privacy_subtitle">How FocusGram handles your data</string>
+    <string name="privacy_title">Privacy</string>
+    <string name="privacy_body">FocusGram does not collect, store, or share your data. Your Instagram session stays on this device. The app loads Instagram inside a restricted WebView and keeps Reels, Stories, Explore, Posts, and Profiles out of the experience.</string>
+
+    <string name="source_code">Source code</string>
+    <string name="source_subtitle">View the project on GitHub</string>
+    <string name="version">Version</string>
+
+    <string name="footer">Built for focused conversations.</string>
+
+    <string name="error_title">Can\'t reach Instagram</string>
+    <string name="error_message">Check your connection and try again.</string>
+
+    <string name="logo_content_description">FocusGram</string>
+    <string name="no_browser">No browser app found.</string>
 </resources>

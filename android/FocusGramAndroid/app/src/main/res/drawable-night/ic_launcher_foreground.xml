@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="0.075"
+        android:scaleY="0.075"
+        android:translateX="21"
+        android:translateY="21"
+        >
+        <path
+            android:name="frame-and-received-messages"
+            android:fillColor="#A5AF9F"
+            android:pathData="M272 40H608A232 232 0 0 1 840 272V608A232 232 0 0 1 608 840H140A100 100 0 0 1 40 740V272A232 232 0 0 1 272 40ZM272 116A156 156 0 0 0 116 272V740A24 24 0 0 0 140 764H608A156 156 0 0 0 764 608V272A156 156 0 0 0 608 116ZM252 200H444A60 60 0 0 1 504 260V260A60 60 0 0 1 444 320H216A24 24 0 0 1 192 296V260A60 60 0 0 1 252 200ZM252 560H348A60 60 0 0 1 408 620V620A60 60 0 0 1 348 680H216A24 24 0 0 1 192 656V620A60 60 0 0 1 252 560Z" />
+        <path
+            android:name="sent-message"
+            android:fillColor="#BBA7A1"
+            android:pathData="M372 380H628A60 60 0 0 1 688 440V476A24 24 0 0 1 664 500H372A60 60 0 0 1 312 440V440A60 60 0 0 1 372 380Z" />
+    </group>
+</vector>
